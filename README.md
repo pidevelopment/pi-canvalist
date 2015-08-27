@@ -1,7 +1,20 @@
-# Pi-canvalist
+# pi-canvalist
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Prototype app for a canvassing app.
+
+## To-do:
+
+* Import Material Design
+* Create Menu bar
+* Select color palette
+* Create login flow
+	* Create login form
+	* Setup authenticated routes
+* Table view
+	* List of people
+	* Search box and button
+	* Buttons marking status
+* Create logout flow
 
 ## Prerequisites
 
