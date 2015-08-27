@@ -6,6 +6,9 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('list', function() {
+    this.route('voter');
+  });
 });
 
 export default Router;
