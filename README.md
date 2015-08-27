@@ -4,9 +4,6 @@ Prototype app for a canvassing app.
 
 ## To-do:
 
-* Import Material Design
-* Create Menu bar
-* Select color palette
 * Create login flow
 	* Create login form
 	* Setup authenticated routes
@@ -14,7 +11,6 @@ Prototype app for a canvassing app.
 	* List of people
 	* Search box and button
 	* Buttons marking status
-* Create logout flow
 
 ## Prerequisites
 

@@ -1,0 +1,23 @@
+
+{{#if session.isAuthenticated}}
+
+{{else}}
+
+	<div class="container">
+		{{#md-card title="Card Title"
+			titleClass="cyan-text"
+			image="images/ember-9a2571346ddbec766fbe11304e74e784.png"
+			id="image-card"}}
+
+			{{#md-card-content}}
+				Welcome to pi-canvalist!  Please login with your 
+				Google account to begin managing your canvassing list.
+			{{/md-card-content}}
+
+			{{#md-card-action}}
+				<a class="cyan-text" {{action 'login'}}>Login</a>
+			{{/md-card-action}}
+		{{/md-card}}
+	</div>
+
+{{/if}}

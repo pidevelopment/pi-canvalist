@@ -1,6 +1,21 @@
-<h2 id="title">Welcome to Ember.js</h2>
+{{#md-navbar name='pi-canvalist' class='cyan darken-2'}}
+	{{#if session.isAuthenticated}}
+		<li><a href="#" {{action 'invalidateSession'}}>logout</a></li>
+	{{/if}}
+{{/md-navbar}}
 
-{{outlet}}
+<div class="container">
+	{{outlet}}
+</div>
+
+<div class="container">
+	<footer class="site-footer content-info" role="contentinfo">
+		<div class="container">
+			<p>Powered by <span class="sr-only">Pi</span> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 298.5 304.5" enable-background="new 0 0 298.5 304.5" xml:space="preserve" class="footer-logo"><g><path d="M149.3 25.8c34.5 0 67 13.4 91.5 37.8c24.4 24.4 37.9 56.8 37.9 91.3c0 34.5-13.5 66.9-37.9 91.3 c-24.4 24.4-56.9 37.8-91.5 37.8s-67-13.4-91.5-37.8C33.5 222 20 189.5 20 155c0-34.5 13.5-66.9 37.9-91.3 C82.3 39.3 114.8 25.8 149.3 25.8 M149.3 7.8C68 7.8 2 73.7 2 155c0 81.3 66 147.2 147.3 147.2S296.7 236.3 296.7 155 C296.7 73.7 230.7 7.8 149.3 7.8L149.3 7.8z" class="site-logo-1"/><g><path d="M63.5 99.4L63.5 99.4l143.2-21.3c57.6-8.7 66-44.4 66.1-75.8c-14.8 24.2-37.5 34.2-84.9 41.2 c0 0-77.6 11.5-120.7 17.9c-28.7 4.3-38.6 15.2-44.5 22.4c-2.9 3.6-9.1 22.5-9.1 22.5l-4 10l-3 6.8l0.9 5.7 c0 0 15.5-23.6 49.3-28.6C56.9 100.3 59.3 100 63.5 99.4z" class="site-logo-1"/><path d="M208.9 217.1c0-1.7 0-80.1 0-118.2h-36.3c0 31.8 0 92.7 0 123.5c0 13.1 4.4 30.1 18.2 40.6 c15.7 12 54.8 17.8 79.6-27.2C260.1 254.4 208.9 251.2 208.9 217.1z" class="site-logo-1"/><path d="M61.8 92.5c0 38.1 0 116.6 0 118.2c0 35.6-19.1 40.3-19.1 40.3l11.7 13l16.3 12.3c0 0 27.4-12.6 27.4-55.4 c0-31.1 0-95.5 0-128.4H61.8z" class="site-logo-1"/></g><path d="M149.3 302.2" class="site-logo-2"/></g></svg></p>
+			<p><small class="text-muted">Copyright &copy; 2015 Pi Development</small></p>
+		</div>
+	</footer>
+</div>
 
 {{!-- ember-cli-materialize modal container --}}
 {{md-modal-container}}

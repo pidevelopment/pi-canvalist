@@ -7,18 +7,37 @@ module.exports = function(environment) {
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {
-      FEATURES: {
-        // Here you can enable experimental features on an ember canary build
-        // e.g. 'with-controller': true
+      FEATURES: {}
+    },
+
+    APP: {},
+    
+    sassOptions: {
+      includePaths: ['bower_components/materialize/sass']
+    },
+
+    contentSecurityPolicy: {
+      'default-src': "accounts.google.com",
+      'script-src': "'self' apis.google.com",
+      'font-src': "'self'",
+      'connect-src': "'self' byway.com",
+      'img-src': "'self'",
+      'style-src': "'self'",
+      'media-src': "'self'",
+      'frame-src': "accounts.google.com"
+    },
+
+    torii: {
+      providers: {
+        'google-api': {
+          clientId: '837903891646.apps.googleusercontent.com',
+          domain: 'localhost:4200'
+        }
       }
     },
 
-    APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
-    },
-    sassOptions: {
-      includePaths: ['bower_components/materialize/sass']
+    'simple-auth': {
+      authorizer: 'authorizer:application'
     }
   };
 
