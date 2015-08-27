@@ -1,7 +1,7 @@
 {
   "name": "pi-canvalist",
-  "version": "0.0.0",
-  "description": "Small description for pi-canvalist goes here",
+  "version": "0.0.1",
+  "description": "Prototype canvassing list app",
   "private": true,
   "directories": {
     "doc": "doc",
