@@ -2,26 +2,29 @@
 {{#if session.isAuthenticated}}
 
 	<div class="container">
-	<div class="container">
-		{{#md-card title=session.secure.user.name
-			image=session.secure.user.picture
-			titleClass="cyan-text"
-			id="image-card"}}
+		<div class="row">
+			<div class="col s6 offset-s3">
+				{{#md-card title=session.secure.user.name
+					image=session.secure.user.picture
+					titleClass="cyan-text"
+					id="image-card"}}
 
-			{{#md-card-content}}
-				{{session.secure.user.email}}
-			{{/md-card-content}}
+					{{#md-card-content}}
+						{{session.secure.user.email}}
+					{{/md-card-content}}
 
-			{{#md-card-action}}
-				<a class="cyan-text" {{action 'login'}}>Login</a>
-			{{/md-card-action}}
-		{{/md-card}}
-	</div></div>
+					{{#md-card-action}}
+						<a class="cyan-text" {{action 'invalidateSession'}}>Logout</a>
+					{{/md-card-action}}
+				{{/md-card}}
+			</div>
+		</div>
+	</div>
 
 {{else}}
 
 	<div class="container">
-		{{#md-card title="Card Title"
+		{{#md-card title="Login Required"
 			titleClass="cyan-text"
 			id="image-card"}}
 
