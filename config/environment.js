@@ -11,19 +11,15 @@ module.exports = function(environment) {
     },
 
     APP: {},
-    
-    sassOptions: {
-      includePaths: ['bower_components/materialize/sass']
-    },
 
     contentSecurityPolicy: {
       'default-src': "accounts.google.com",
       'script-src': "'self' apis.google.com",
       'font-src': "'self'",
-      'connect-src': "'self' byway.com",
+      'connect-src': "'self' ws://localhost:7000 localhost:7000 byway.com https://www.googleapis.com/oauth2/v2/userinfo",
       'img-src': "'self'",
-      'style-src': "'self'",
-      'media-src': "'self'",
+      'report-uri':"'localhost'",
+      'style-src': "'self' 'unsafe-inline' styles.kushpin.com",
       'frame-src': "accounts.google.com"
     },
 
@@ -37,7 +33,12 @@ module.exports = function(environment) {
     },
 
     'simple-auth': {
-      authorizer: 'authorizer:application'
+      authorizer: 'authorizer:application',
+      routeAfterAuthentication: 'application'
+    },
+
+    sassOptions: {
+      includePaths: ['bower_components/materialize/sass']
     }
   };
 

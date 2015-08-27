@@ -1,12 +1,26 @@
 
 {{#if session.isAuthenticated}}
 
+	<div class="container">
+		{{#md-card title=""
+			titleClass="cyan-text"
+			id="image-card"}}
+
+			{{#md-card-content}}
+				{{session.secure.user.email}}
+			{{/md-card-content}}
+
+			{{#md-card-action}}
+				<a class="cyan-text" {{action 'login'}}>Login</a>
+			{{/md-card-action}}
+		{{/md-card}}
+	</div>
+
 {{else}}
 
 	<div class="container">
 		{{#md-card title="Card Title"
 			titleClass="cyan-text"
-			image="images/ember-9a2571346ddbec766fbe11304e74e784.png"
 			id="image-card"}}
 
 			{{#md-card-content}}
