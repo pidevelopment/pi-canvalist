@@ -14,7 +14,7 @@
 					{{/md-card-content}}
 
 					{{#md-card-action}}
-						<a class="cyan-text" {{action 'invalidateSession'}}>Logout</a>
+						<a href="/logout" class="cyan-text" {{action 'invalidateSession'}}>Logout</a>
 					{{/md-card-action}}
 				{{/md-card}}
 			</div>
@@ -29,12 +29,12 @@
 			id="image-card"}}
 
 			{{#md-card-content}}
-				Welcome to pi-canvalist!  Please login with your 
+				Welcome to pi-canvalist!  Please login with your
 				Google account to begin managing your canvassing list.
 			{{/md-card-content}}
 
 			{{#md-card-action}}
-				<a class="cyan-text" {{action 'login'}}>Login</a>
+				<a href="/login" class="cyan-text" {{action 'login'}}>Login</a>
 			{{/md-card-action}}
 		{{/md-card}}
 	</div>
