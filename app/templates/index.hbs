@@ -2,7 +2,9 @@
 {{#if session.isAuthenticated}}
 
 	<div class="container">
-		{{#md-card title=""
+	<div class="container">
+		{{#md-card title=session.secure.user.name
+			image=session.secure.user.picture
 			titleClass="cyan-text"
 			id="image-card"}}
 
@@ -14,7 +16,7 @@
 				<a class="cyan-text" {{action 'login'}}>Login</a>
 			{{/md-card-action}}
 		{{/md-card}}
-	</div>
+	</div></div>
 
 {{else}}
 
