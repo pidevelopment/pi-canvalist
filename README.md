@@ -4,9 +4,6 @@ Prototype app for a canvassing app.
 
 ## To-do:
 
-* Create login flow
-	* Create login form
-	* Setup authenticated routes
 * Table view
 	* List of people
 	* Search box and button

@@ -1,5 +1,8 @@
 {{#md-navbar name='pi-canvalist' class='light-blue darken-3'}}
 	{{#if session.isAuthenticated}}
+		{{#link-to 'list' tagName='li'}}
+			{{link-to 'voter list' 'list'}}
+		{{/link-to}}
 		<li><a href="#" {{action 'invalidateSession'}}>logout</a></li>
 	{{/if}}
 {{/md-navbar}}
