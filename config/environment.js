@@ -17,7 +17,7 @@ module.exports = function(environment) {
       'script-src': "'self' apis.google.com",
       'font-src': "'self'",
       'connect-src': "'self' ws://localhost:7000 localhost:7000 byway.com https://www.googleapis.com/oauth2/v2/userinfo",
-      'img-src': "'self' *.googleusercontent.com",
+      'img-src': "'self' *.googleusercontent.com data:",
       'report-uri':"'localhost'",
       'style-src': "'self' 'unsafe-inline' styles.kushpin.com",
       'frame-src': "accounts.google.com"
