@@ -17,8 +17,10 @@ export default Ember.Component.extend({
         if(response.data.length) {
           var resultsArray = [];
           for (var i = response.data.length - 1; i >= 0; i--) {
+            response.data[i].hasSigned = response.data[i].sign_status === "Not Signed" ? false : true;
+            console.log(response.data[i]);
             resultsArray.push(response.data[i]);
-          };
+          }
           component.set('results', resultsArray);
         }
         Ember.Logger.info("results", component.get('results'));

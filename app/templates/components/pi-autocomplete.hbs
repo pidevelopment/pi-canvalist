@@ -1,9 +1,19 @@
 {{md-input value=value label='Search' class="col s6" validate=true}}
 
-{{#md-table content=results class="responsive-table striped bordered" as |row|}}
-  {{md-table-col row=row header="First Name" valueBindingPath='firstname'}}
-  {{md-table-col row=row header="Last Name" valueBindingPath='lastname'}}
-  {{md-table-col row=row header="Voter ID" valueBindingPath='voterid'}}
-  {{md-table-col row=row header="Signed Status" valueBindingPath='sign_status'}}
-{{/md-table}}
-{{yield}}
+{{#if results}}
+	{{#md-table content=results class="responsive-table striped bordered" as |row|}}
+	  {{md-table-col row=row header="First Name" valueBindingPath='firstname'}}
+	  {{md-table-col row=row header="Last Name" valueBindingPath='lastname'}}
+	  {{md-table-col row=row header="Voter ID" valueBindingPath='voterid'}}
+	  {{#md-table-col row=row header="Signed Status" valueBindingPath='null'}}
+	  	{{#if row.hasSigned}}
+	  		{{md-btn class='red darken-3 white-text' text="Mark as Unsigned"}}
+	  	{{else}}
+	  		{{md-btn class='light-blue darken-3 white-text' text="Mark as Signed"}}
+	  	{{/if}}
+	  {{/md-table-col}}
+	{{/md-table}}
+	{{yield}}
+{{else}}
+	<p>There are no results to display.</p>
+{{/if}}
