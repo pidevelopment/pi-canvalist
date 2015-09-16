@@ -26,5 +26,14 @@ export default Ember.Component.extend({
         Ember.Logger.info("results", component.get('results'));
       });
     }
+  },
+
+  actions: {
+    markAsSigned: function(row) {
+      console.log('signed!', row);
+    },
+    markAsUnsigned: function(row) {
+      console.log('unsigned!', row);
+    }
   }
 });

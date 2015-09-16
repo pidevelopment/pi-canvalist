@@ -2,16 +2,26 @@
 
 {{#if results}}
 	{{#md-table content=results class="responsive-table striped bordered" as |row|}}
-	  {{md-table-col row=row header="First Name" valueBindingPath='firstname'}}
-	  {{md-table-col row=row header="Last Name" valueBindingPath='lastname'}}
-	  {{md-table-col row=row header="Voter ID" valueBindingPath='voterid'}}
-	  {{#md-table-col row=row header="Signed Status" valueBindingPath='null'}}
-	  	{{#if row.hasSigned}}
-	  		{{md-btn class='red darken-3 white-text' text="Mark as Unsigned"}}
-	  	{{else}}
-	  		{{md-btn class='light-blue darken-3 white-text' text="Mark as Signed"}}
-	  	{{/if}}
-	  {{/md-table-col}}
+		{{md-table-col row=row header="First Name" valueBindingPath='firstname'}}
+		{{md-table-col row=row header="Last Name" valueBindingPath='lastname'}}
+		{{md-table-col row=row header="Voter ID" valueBindingPath='voterid'}}
+		{{#md-table-col row=row header="Signed Status" valueBindingPath='null'}}
+			{{#if row.hasSigned}}
+				{{md-btn 
+					action="markAsUnsigned" 
+					actionArg=row 
+					class='red darken-3 white-text' 
+					text="Mark as Unsigned"
+				}}
+			{{else}}
+				{{md-btn 
+					action="markAsSigned" 
+					actionArg=row 
+					class='light-blue darken-3 white-text' 
+					text="Mark as Signed"
+				}}
+			{{/if}}
+		{{/md-table-col}}
 	{{/md-table}}
 	{{yield}}
 {{else}}
