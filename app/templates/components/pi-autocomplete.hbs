@@ -1,5 +1,9 @@
 {{md-input value=value label='Search' class="col s6" validate=true}}
-{{#each result in results}}
-  {{result.firstname}} {{result.lastname}}
-{{/each}}
+
+{{#md-table content=results class="responsive-table striped bordered" as |row|}}
+  {{md-table-col row=row header="First Name" valueBindingPath='firstname'}}
+  {{md-table-col row=row header="Last Name" valueBindingPath='lastname'}}
+  {{md-table-col row=row header="Voter ID" valueBindingPath='voterid'}}
+  {{md-table-col row=row header="Signed Status" valueBindingPath='sign_status'}}
+{{/md-table}}
 {{yield}}

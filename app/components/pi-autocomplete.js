@@ -6,6 +6,7 @@ export default Ember.Component.extend({
   results: [],
   keyUp: function (e) {
     this.set('results', []);
+    var component = this;
     Ember.Logger.info("keyup", e.keyCode);
     var value = this.get('value');
     if (value.length) {
@@ -13,6 +14,14 @@ export default Ember.Component.extend({
         type: 'GET'
       }).then(function(response) {
         Ember.Logger.info("response", response);
+        if(response.data.length) {
+          var resultsArray = [];
+          for (var i = response.data.length - 1; i >= 0; i--) {
+            resultsArray.push(response.data[i]);
+          };
+          component.set('results', resultsArray);
+        }
+        Ember.Logger.info("results", component.get('results'));
       });
     }
   }
