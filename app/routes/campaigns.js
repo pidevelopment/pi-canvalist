@@ -4,7 +4,7 @@ import { request } from 'ic-ajax';
 export default Ember.Route.extend({
   model: function() {
   	// return Ember.$.getJSON("http://petitions.pidevelopment.org/api/campaigns");
-  	var token = this.get('session.secure.token');
+  	var token = this.get('session.content.secure.token');
 		console.log('token:', token);
 
     return request("http://petitions.pidevelopment.org/api/campaigns", {
