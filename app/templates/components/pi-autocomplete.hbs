@@ -4,6 +4,7 @@
 	{{#md-table content=results class="responsive-table striped bordered" as |row|}}
 		{{md-table-col row=row header="First Name" valueBindingPath='firstname'}}
 		{{md-table-col row=row header="Last Name" valueBindingPath='lastname'}}
+		{{md-table-col row=row header="Address" valueBindingPath='fulladdress'}}
 		{{md-table-col row=row header="Voter ID" valueBindingPath='voterid'}}
 		{{#md-table-col row=row header="Signed Status" valueBindingPath='null'}}
 			{{#if row.hasSigned}}
