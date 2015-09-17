@@ -1,7 +1,7 @@
-<h3>Campaigns {{#link-to 'campaigns.new'}}<small>Create Campain</small>{{/link-to}}</h3>
+<h3>Campaigns {{#link-to 'campaign-new'}}<small>Create Campain</small>{{/link-to}}</h3>
 
 {{#each campaign in model}}
   campaign
 {{else}}
-  You don't have any campaigns. Why not {{#link-to 'campaigns.new'}}create one{{/link-to}}?
+  You don't have any campaigns. Why not {{#link-to 'campaign-new'}}create one{{/link-to}}?
 {{/each}}

@@ -11,9 +11,8 @@ Router.map(function() {
   // });
   this.route('voters');
   this.route('voter', { path: '/voters/:id' });
-  this.route('campaigns', function() {
-    this.route('new');
-  });
+  this.route('campaigns');
+  this.route('campaign-new', { path: '/campaigns/new' });
 });
 
 export default Router;

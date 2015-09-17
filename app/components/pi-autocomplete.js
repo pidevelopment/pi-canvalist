@@ -11,7 +11,11 @@ export default Ember.Component.extend({
     var value = this.get('value');
     if (value.length) {
       return request('http://petitions.pidevelopment.org/api/vrlookup?query=' + value, {
-        type: 'GET'
+        type: 'GET',
+        beforeSend: function(request) {
+          var token = component.get('session.content.secure.token');
+          request.setRequestHeader("Authorization", 'Bearer ' + token);
+        }
       }).then(function(response) {
         Ember.Logger.info("response", response);
         if(response.data.length) {
