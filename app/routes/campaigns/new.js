@@ -2,9 +2,15 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   owner: "",
-  title: "",
+  title: "Test",
   description: "",
-  start: new Date,
-  end: new Date,
-  scope: "PI"
+  start: Date.now(),
+  end: Date.now() + 1,
+  scope: "PI",
+
+  actions: {
+    create: function(event) {
+      Ember.Logger.info("title", this.get('title'));
+    }
+  }
 });

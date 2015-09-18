@@ -1,6 +1,10 @@
 <h3>New Campaign</h3>
 
 <div class="row">
-  {{md-textarea label='Description'
-    value=description class="col s12"}}
+  {{md-input label="Title" value=route.title class="col s12"}}
+  {{md-textarea label='Description' value=description class="col s12"}}
+  {{md-btn text='Large button'
+    action='create'
+    buttonType='large'
+    class=''}}
 </div>
