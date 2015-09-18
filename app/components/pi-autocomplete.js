@@ -4,8 +4,10 @@ import { request } from 'ic-ajax';
 export default Ember.Component.extend({
   value: "",
   results: [],
+  isLoading: false,
   keyUp: function (e) {
     this.set('results', []);
+    this.set('isLoading', true);
     var component = this;
     var campaignID = this.get('campaign');
     Ember.Logger.info("keyup", e.keyCode);
@@ -28,9 +30,11 @@ export default Ember.Component.extend({
           }
           component.set('results', resultsArray);
         }
+        component.set('isLoading', false);
         Ember.Logger.info("results", component.get('results'));
       });
     }
+    component.set('isLoading', false);
   },
 
   actions: {
