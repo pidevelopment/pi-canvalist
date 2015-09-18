@@ -13,7 +13,9 @@ export default Ember.Route.extend({
       	end: Date.now() + 1,
       	scope: 'PI'
       };
-      return request("http://petitions.pidevelopment.org/api/campaigns", {
+      console.log(campaign)
+      return Ember.$.ajax({
+      	url: "http://petitions.pidevelopment.org/api/campaigns",
       	type: 'POST',
       	data: campaign,
       	beforeSend: function(request) {
