@@ -1,4 +1,4 @@
-{{md-input value=value label='Search' class="col s6" validate=true}}
+{{md-input value=value label='Enter Last Name' class="col s6" validate=true}}
 
 {{#if results}}
 	{{#md-table content=results class="responsive-table striped bordered" as |row|}}
@@ -8,17 +8,17 @@
 		{{md-table-col row=row header="Voter ID" valueBindingPath='voterid'}}
 		{{#md-table-col row=row header="Signed Status" valueBindingPath='null'}}
 			{{#if row.hasSigned}}
-				{{md-btn 
-					action="markAsUnsigned" 
-					actionArg=row 
-					class='red darken-3 white-text' 
+				{{md-btn
+					action="markAsUnsigned"
+					actionArg=row
+					class='red darken-3 white-text'
 					text="Mark as Unsigned"
 				}}
 			{{else}}
-				{{md-btn 
-					action="markAsSigned" 
-					actionArg=row 
-					class='light-blue darken-3 white-text' 
+				{{md-btn
+					action="markAsSigned"
+					actionArg=row
+					class='light-blue darken-3 white-text'
 					text="Mark as Signed"
 				}}
 			{{/if}}

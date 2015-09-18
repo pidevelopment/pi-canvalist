@@ -7,10 +7,11 @@ export default Ember.Component.extend({
   keyUp: function (e) {
     this.set('results', []);
     var component = this;
+    var campaignID = this.get('campaign');
     Ember.Logger.info("keyup", e.keyCode);
     var value = this.get('value');
     if (value.length) {
-      return request('http://petitions.pidevelopment.org/api/vrlookup?query=' + value, {
+      return request('http://petitions.pidevelopment.org/api/vrlookup?query=' + value + '&campaign=' + campaignID, {
         type: 'GET',
         beforeSend: function(request) {
           var token = component.get('session.content.secure.token');

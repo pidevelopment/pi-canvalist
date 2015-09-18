@@ -1,0 +1,11 @@
+<h3>Campaign: {{model.title}}</h3>
+
+<p>
+  <strong>Start date:</strong> {{model.start}}<br>
+  <strong>End date:</strong> {{model.end}}
+</p>
+
+<p><strong>Description:</strong> {{model.description}}</p>
+
+<h4>Search Signers</h4>
+{{pi-autocomplete campaign=model.id}}

@@ -1,13 +1,32 @@
-<h3>Campaigns 
+<h3>Campaigns
 	{{#link-to 'campaigns.new'}}
-	<a class="light-blue darken-3 waves-light waves-effect btn-floating"> 
+	<a class="light-blue darken-3 waves-light waves-effect btn-floating">
 		<i class="mdi-content-add left"></i>
 	</a>
 	{{/link-to}}
 </h3>
 
 {{#each model as |campaign|}}
-  {{campaign}}
+  {{campaign.title}}
 {{else}}
   You don't have any campaigns. Why not {{#link-to 'campaigns.new'}}create one{{/link-to}}?
 {{/each}}
+
+{{#md-table content=model as |row|}}
+  {{#md-table-col row=row key='title' header='Title'}}
+    {{#link-to 'campaigns.view' row.id}}{{row.title}}{{/link-to}}
+  {{/md-table-col}}
+  {{#md-table-col row=row key='description' header='Description'}}
+    {{row.description}}
+  {{/md-table-col}}
+  {{#md-table-col row=row key='start' header='Dates'}}
+    Start: {{row.start}}<br>
+    End: {{row.end}}
+  {{/md-table-col}}
+  {{#md-table-col row=row key='scope' header='Scope'}}
+    {{row.scope}}
+  {{/md-table-col}}
+  {{#md-table-col row=row key='id' header='Actions'}}
+    {{#link-to 'campaigns.view' row.id}}View Campaign{{/link-to}}
+  {{/md-table-col}}
+{{/md-table}}
