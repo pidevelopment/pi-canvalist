@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import { request } from 'ic-ajax';
 
 export default Ember.Route.extend({
 	actions: {
@@ -12,7 +13,15 @@ export default Ember.Route.extend({
       	end: Date.now() + 1,
       	scope: 'PI'
       };
-      console.log('...', campaign);
+      return request("http://petitions.pidevelopment.org/api/campaigns", {
+      	type: 'POST',
+      	data: campaign,
+      	beforeSend: function(request) {
+      		request.setRequestHeader("Authorization", "Bearer " + campaign.owner);
+      	}
+      }).then(function(response) {
+      	Ember.Logger.info('......', response);
+      });
     }
   }
 });
