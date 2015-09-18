@@ -6,7 +6,7 @@
 	{{/link-to}}
 </h3>
 
-{{#each campaign in model}}
+{{#each model as |campaign|}}
   {{campaign}}
 {{else}}
   You don't have any campaigns. Why not {{#link-to 'campaigns.new'}}create one{{/link-to}}?
