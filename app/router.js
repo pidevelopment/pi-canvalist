@@ -6,9 +6,6 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  // this.route('list', function() {
-  //   this.route('voter', { path: ':id' });
-  // });
   this.route('voters');
   this.route('voter', { path: '/voters/:id' });
   this.route('campaigns', function() {
