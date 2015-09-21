@@ -1,15 +1,40 @@
-@import 'materialize';
-@import 'ember-cli-materialize';
+// @import 'materialize';
+// @import 'ember-cli-materialize';
 
-.site-nav {
-  margin-bottom: 50px;
+$font-size-base: 18px;
+@import "bootstrap";
+
+// $fa-css-prefix: 'glyphicon';
+@import "../../bower_components/font-awesome/scss/font-awesome";
+
+
+.dropdown-toggle-img {
+  padding-right: 37px !important;
+}
+
+  .navbar-img {
+    position: absolute;
+    top: 4px;
+    width: 40px;
+    border: 1px solid $navbar-default-border;
+  }
+
+.heading-button {
+  @media(min-width: $screen-sm) {
+    float: right;
+  }
+}
+
+.site-content {
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .site-footer {
 	color: #555;
 	padding: 30px 0;
 	text-align: center;
-	text-transform: uppercase;
+	// text-transform: uppercase;
 }
 
 .site-logo-1 {
@@ -22,13 +47,13 @@
 	top: 5px;
 }
 
-.sr-only {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip: rect(0,0,0,0);
-	border: 0;
-}
+// .sr-only {
+// 	position: absolute;
+// 	width: 1px;
+// 	height: 1px;
+// 	padding: 0;
+// 	margin: -1px;
+// 	overflow: hidden;
+// 	clip: rect(0,0,0,0);
+// 	border: 0;
+// }

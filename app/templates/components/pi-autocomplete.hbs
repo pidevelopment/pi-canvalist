@@ -1,35 +1,45 @@
-{{md-input value=value label='Enter Last Name' class="col s6" validate=true}}
+<p>{{bs-input type="text" value=value placeholder="Search by last name"}}</p>
 
 {{#if isLoading}}
-  {{md-loader mode="circular" color="blue"}}
+  {{fa-icon "refresh" spin=true}}
 {{else}}
   {{#if results}}
-    {{#md-table content=results class="responsive-table striped bordered" as |row|}}
-      {{md-table-col row=row header="First Name" valueBindingPath='firstname'}}
-      {{md-table-col row=row header="Last Name" valueBindingPath='lastname'}}
-      {{md-table-col row=row header="Address" valueBindingPath='fulladdress'}}
-      {{md-table-col row=row header="Voter ID" valueBindingPath='voterid'}}
-      {{#md-table-col row=row header="Signed Status" valueBindingPath='null'}}
-        {{#if row.hasSigned}}
-          {{md-btn
-            action="markAsUnsigned"
-            actionArg=row
-            class='red darken-3 white-text'
-            text="Mark as Unsigned"
-          }}
-        {{else}}
-          {{md-btn
-            action="markAsSigned"
-            actionArg=row
-            class='light-blue darken-3 white-text'
-            text="Mark as Signed"
-          }}
-        {{/if}}
-      {{/md-table-col}}
-    {{/md-table}}
-    {{yield}}
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+      <caption>Showing {{results.length}} voters</caption>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Address</th>
+          <th>Voter ID</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each results as |voter|}}
+          <tr>
+            <td>{{voter.firstname}}</td>
+            <td>{{voter.lastname}}</td>
+            <td>{{voter.fulladdress}}</td>
+            <td>{{voter.voterid}}</td>
+            <td>
+              {{voter.sign_status}}
+              {{#if row.hasSigned}}
+                mark as not signed
+              {{else}}
+                mark as signed
+              {{/if}}
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
   {{else}}
-    <p>There are no results to display.</p>
+    {{#if value}}
+       <p>No voters found for "{{value}}"</p>
+    {{/if}}
   {{/if}}
 {{/if}}
 

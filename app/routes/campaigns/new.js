@@ -10,6 +10,11 @@ export default Ember.Route.extend({
       	description: this.controllerFor('campaigns.new').get('description'),
       	scope: 'PI'
       };
+      var route = this;
+      if (!campaign.title) {
+        Ember.Logger.info("no title");
+        return false
+      }
       var token = this.get('session.secure.token');
       return Ember.$.ajax({
       	url: "http://petitions.pidevelopment.org/api/campaigns",
@@ -21,6 +26,10 @@ export default Ember.Route.extend({
       	}
       }).then(function(response) {
       	Ember.Logger.info('response from server', response);
+        if(response.data.length) {
+          var campaignID = response.data[0].id;
+          return route.transitionTo('campaigns.view', campaignID);
+        }
       });
     }
   }

@@ -1,42 +1,17 @@
+<h2>
+  {{model.length}} Campaign(s)
+  <div class="heading-button">{{#link-to 'campaigns.new'}}{{bs-button type="primary" icon="fa fa-plus" textState=buttonState defaultText="Add New" loadingText="Loading..."}}{{/link-to}}</div>
+</h2>
 
-{{#if session.isAuthenticated}}
-
-	<div class="container">
-		<div class="row">
-			<div class="col s6 offset-s3">
-				{{#md-card title=session.secure.user.name
-					image=session.secure.user.picture
-					titleClass="cyan-text"
-					id="image-card"}}
-
-					{{#md-card-content}}
-						{{session.secure.user.email}}
-					{{/md-card-content}}
-
-					{{#md-card-action}}
-						<a href="/logout" class="cyan-text" {{action 'invalidateSession'}}>Logout</a>
-					{{/md-card-action}}
-				{{/md-card}}
-			</div>
-		</div>
-	</div>
-
+{{#if model}}
+  <div class="list-group">
+    {{#each model as |campaign|}}
+      {{#link-to 'campaigns.view' campaign.id class="list-group-item"}}
+        <span class="badge">{{fa-icon "list-ul"}} Manage</span>
+        <h4 class="list-group-item-heading">{{campaign.title}}</h4>
+      {{/link-to}}
+    {{/each}}
+  </div>
 {{else}}
-
-	<div class="container">
-		{{#md-card title="Login Required"
-			titleClass="cyan-text"
-			id="image-card"}}
-
-			{{#md-card-content}}
-				Welcome to pi-canvalist!  Please login with your
-				Google account to begin managing your canvassing list.
-			{{/md-card-content}}
-
-			{{#md-card-action}}
-				<a href="/login" class="cyan-text" {{action 'login'}}>Login</a>
-			{{/md-card-action}}
-		{{/md-card}}
-	</div>
-
+  You don't have any campaigns yet. Why not {{#link-to 'campaigns.new'}}create one{{/link-to}}?
 {{/if}}

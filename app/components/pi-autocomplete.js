@@ -6,6 +6,7 @@ export default Ember.Component.extend({
   results: [],
   isLoading: false,
   keyUp: function (e) {
+    this.sendAction('handleData', e);
     this.set('results', []);
     this.set('isLoading', true);
     var component = this;
@@ -38,11 +39,34 @@ export default Ember.Component.extend({
   },
 
   actions: {
-    markAsSigned: function(row) {
-      console.log('signed!', row);
+    markAsSigned: function(voter) {
+      var component = this;
+      var campaignID = this.get('campaign');
+      var voterID = voter.voterid;
+
+      return request('http://petitions.pidevelopment.org/api/campaigns/marksigned/' + campaignID + '/' + voterID, {
+        type: 'GET',
+        beforeSend: function(request) {
+          var token = component.get('session.content.secure.token');
+          request.setRequestHeader("Authorization", 'Bearer ' + token);
+        }
+      }).then(function(response) {
+        Ember.Logger.info("mark signed response", response);
+      });
     },
-    markAsUnsigned: function(row) {
-      console.log('unsigned!', row);
+    markAsUnsigned: function(voter) {
+      var component = this;
+      var campaignID = this.get('campaign');
+      var voterID = voter.voterid;
+      return request('http://petitions.pidevelopment.org/api/campaigns/marknotsigned/' + campaignID + '/' + voterID, {
+        type: 'GET',
+        beforeSend: function(request) {
+          var token = component.get('session.content.secure.token');
+          request.setRequestHeader("Authorization", 'Bearer ' + token);
+        }
+      }).then(function(response) {
+        Ember.Logger.info("mark not signed response", response);
+      });
     }
   }
 });

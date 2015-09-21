@@ -1,10 +1,21 @@
-<h3>New Campaign</h3>
+<ol class="breadcrumb">
+  <li>{{#link-to 'index'}}Campaigns{{/link-to}}</li>
+  <li class="active">New</li>
+</ol>
 
-<div class="row">
-  {{md-input label="Title" value=title class="col s12"}}
-  {{md-textarea label='Description' value=description class="col s12"}}
-  {{md-btn text='Create Campaign'
-    action='create'
-    buttonType='large'
-    class='light-blue darken-3 waves-light waves-effect'}}
-</div>
+<h3>Create Campaign</h3>
+
+{{#bs-form action="create"}}
+  {{#bs-form-group}}
+    <label class="control-label">Title</label>
+    {{bs-input type="text" value=title }}
+    <p class="help-block">Titles cannot be changed later.</p>
+  {{/bs-form-group}}
+  {{#bs-form-group}}
+    <label class="control-label">Description</label>
+    {{bs-textarea value=description}}
+  {{/bs-form-group}}
+  {{#bs-form-group}}
+    {{bs-button defaultText="Create Campaign" type="primary" buttonType="submit"}}
+  {{/bs-form-group}}
+{{/bs-form}}

@@ -1,13 +1,52 @@
-{{#md-navbar name='pi-canvalist' class='site-nav light-blue darken-3'}}
-	{{#if session.isAuthenticated}}
-    <li>{{#link-to 'campaigns'}}Campaigns{{/link-to}}</li>
-		<li><a href="#" {{action 'invalidateSession'}}>Logout</a></li>
-	{{/if}}
-{{/md-navbar}}
+<nav class="navbar navbar-default">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Petition Verification</a>
+    </div>
 
-<div class="container">
-	{{outlet}}
-</div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        {{#if session.isAuthenticated}}
+          {{#bs-dropdown tagName="li"}}
+            {{#bs-dropdown-toggle class="dropdown-toggle-img"}}Hi, {{session.secure.user.name}}! <img src="{{session.secure.user.picture}}" alt="photo of {{session.secure.user.name}}" class="navbar-img img-circle"> <span class="caret"></span>{{/bs-dropdown-toggle}}
+            {{#bs-dropdown-menu}}
+              <li><a href="#" {{action 'invalidateSession'}}>Logout</a></li>
+            {{/bs-dropdown-menu}}
+          {{/bs-dropdown}}
+        {{else}}
+          <li><a href="/login" class="cyan-text" {{action 'login'}}>Login</a></li>
+        {{/if}}
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+{{#if session.isAuthenticated}}
+  <div class="container">
+    <div class="site-content">
+      {{outlet}}
+    </div>
+  </div>
+
+{{else}}
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Signature Verification App</h1>
+      <p>Keep track of signature on your petitions like never before!</p>
+      <p>
+        {{#bs-button type="primary" icon="fa fa-user" action="login"}}Sign Up{{/bs-button}} {{#bs-button type="default" icon="fa fa-sign-in" action="login"}}Log In{{/bs-button}}
+      </p>
+    </div>
+  </div>
+{{/if}}
 
 <div class="container">
 	<footer class="site-footer content-info" role="contentinfo">

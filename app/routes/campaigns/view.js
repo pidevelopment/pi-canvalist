@@ -16,5 +16,11 @@ export default Ember.Route.extend({
         return response.data[0];
       }
 		});;
+  },
+
+  actions: {
+    handleData: function(e) {
+      Ember.Logger.info("handling data in the route!", e);
+    }
   }
 });

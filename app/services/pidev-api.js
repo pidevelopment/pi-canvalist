@@ -4,12 +4,15 @@ var apiURL = 'https://petitions.pidevelopment.org/api/';
 
 export default Ember.Service.extend({
 
-  get: function(route, params, successCallback, failureCallback) {
+  get: function(route, params, successCallback, failureCallback, token) {
     params = typeof params !== 'undefined' ? params : [];
     return Ember.$.ajax({
       type: 'GET',
-      url: apiURL + route,
-      data: params
+      url: route,
+      data: params,
+      beforeSend: function(request) {
+        request.setRequestHeader("Authorization", "Bearer " + token);
+      }
     }).then(function(result) {
       // bug in api, sometimes it returns the JSON object stringified.  parse if needed.
       if (typeof result === 'string') { result = JSON.parse(result); }
