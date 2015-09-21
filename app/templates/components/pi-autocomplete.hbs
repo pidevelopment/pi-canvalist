@@ -24,11 +24,10 @@
             <td>{{voter.fulladdress}}</td>
             <td>{{voter.voterid}}</td>
             <td>
-              {{voter.sign_status}}<br>
               {{#if voter.hasSigned}}
-                <button class="btn btn-default" {{action 'markAsUnsigned' voter}}>Mark Not Signed</button>
+                <button class="btn btn-success btn-block" {{action 'markAsUnsigned' voter}}>{{fa-icon "times"}} Mark Not Signed</button>
               {{else}}
-                <button class="btn btn-default" {{action 'markAsSigned' voter}}>Mark Signed</button>
+                <button class="btn btn-primary btn-block" {{action 'markAsSigned' voter}}>{{fa-icon "check"}} Mark Signed</button>
               {{/if}}
             </td>
           </tr>
