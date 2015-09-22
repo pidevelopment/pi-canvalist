@@ -35,10 +35,6 @@ module.exports = function(environment) {
     'simple-auth': {
       authorizer: 'authorizer:application',
       routeAfterAuthentication: 'application'
-    },
-
-    sassOptions: {
-      includePaths: ['bower_components/materialize/sass']
     }
   };
 
