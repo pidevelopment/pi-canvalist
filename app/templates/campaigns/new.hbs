@@ -3,19 +3,21 @@
   <li class="active">New</li>
 </ol>
 
-<h3>Create Campaign</h3>
+<div class="site-content--inset">
+  <h3>Create New Campaign</h3>
 
-{{#bs-form action="create"}}
-  {{#bs-form-group}}
-    <label class="control-label">Title</label>
-    {{bs-input type="text" value=title }}
-    <p class="help-block">Titles cannot be changed later.</p>
-  {{/bs-form-group}}
-  {{#bs-form-group}}
-    <label class="control-label">Description</label>
-    {{bs-textarea value=description}}
-  {{/bs-form-group}}
-  {{#bs-form-group}}
-    {{bs-button defaultText="Create Campaign" type="primary" buttonType="submit"}}
-  {{/bs-form-group}}
-{{/bs-form}}
+  {{#bs-form action="create"}}
+    {{#bs-form-group}}
+      <label class="control-label">Title</label>
+      {{bs-input type="text" value=title }}
+      <p class="help-block">Titles cannot be changed later.</p>
+    {{/bs-form-group}}
+    {{#bs-form-group}}
+      <label class="control-label">Description</label>
+      {{bs-textarea value=description}}
+    {{/bs-form-group}}
+    {{#bs-form-group}}
+      {{bs-button defaultText="Create Campaign" type="primary" buttonType="submit"}}
+    {{/bs-form-group}}
+  {{/bs-form}}
+</div>

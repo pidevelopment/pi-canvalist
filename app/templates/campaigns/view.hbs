@@ -1,15 +1,17 @@
 <ol class="breadcrumb">
   <li>{{#link-to 'index'}}Campaigns{{/link-to}}</li>
-  <li class="active">{{model.title}}</li>
+  <li class="active">Campaign: {{model.title}}</li>
 </ol>
 
-<h3>{{model.title}}</h3>
+<div class="site-content--inset">
+  <h3>{{model.title}}</h3>
 
-<p class="text-muted">
-  <strong>Start:</strong> {{model.start}} | <strong>End</strong> {{model.end}}
-</p>
+  <p class="text-muted">
+    <strong>Start:</strong> {{model.start}} | <strong>End</strong> {{model.end}}
+  </p>
 
-<p><strong>Description:</strong> {{model.description}}</p>
+  <p><strong>Description:</strong> {{model.description}}</p>
 
-<h4>Search Voters</h4>
-{{pi-autocomplete campaign=model.id}}
+  <h4>Search Voters</h4>
+  {{pi-autocomplete campaign=model.id}}
+</div>

@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Petition Verification</a>
+      {{#link-to 'index' class="navbar-brand"}}<strong><span class="text-primary">{{fa-icon "check-circle"}}</span> Petition Verification</strong>{{/link-to}}
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -18,7 +18,7 @@
           {{#bs-dropdown tagName="li"}}
             {{#bs-dropdown-toggle class="dropdown-toggle-img"}}Hi, {{session.secure.user.name}}! <img src="{{session.secure.user.picture}}" alt="photo of {{session.secure.user.name}}" class="navbar-img img-circle"> <span class="caret"></span>{{/bs-dropdown-toggle}}
             {{#bs-dropdown-menu}}
-              <li><a href="#" {{action 'invalidateSession'}}>Logout</a></li>
+              <li><a href="#" {{action 'invalidateSession'}}>{{fa-icon "sign-out"}} Logout</a></li>
             {{/bs-dropdown-menu}}
           {{/bs-dropdown}}
         {{else}}
