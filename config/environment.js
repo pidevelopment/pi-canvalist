@@ -15,11 +15,11 @@ module.exports = function(environment) {
     contentSecurityPolicy: {
       'default-src': "accounts.google.com",
       'script-src': "'self' apis.google.com",
-      'font-src': "'self'",
+      'font-src': "'self' fonts.gstatic.com",
       'connect-src': "'self' ws://localhost:7000 localhost:7000 byway.com https://www.googleapis.com/oauth2/v2/userinfo *.pidevelopment.org",
       'img-src': "'self' *.googleusercontent.com data:",
       'report-uri':"'localhost'",
-      'style-src': "'self' 'unsafe-inline' styles.kushpin.com",
+      'style-src': "'self' 'unsafe-inline' styles.kushpin.com fonts.googleapis.com",
       'frame-src': "accounts.google.com"
     },
 
