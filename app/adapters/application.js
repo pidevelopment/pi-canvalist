@@ -8,9 +8,6 @@ export default DS.RESTAdapter.extend({
 		return this.container.lookup('simple-auth-session:main');
 	}),
 	headers: Ember.computed('session', function() {
-		console.log('session:', this.get('session.secure.token'));
-		return {
-			"Authorization": "Bearer " + this.get('session.secure.token')
-		}
+		return { "Authorization": "Bearer " + this.get('session.secure.token') };
 	})
 });
