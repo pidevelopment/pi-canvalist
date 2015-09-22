@@ -4,8 +4,7 @@ export function initialize(/* container, application */) {
 	Ember.$.ajaxPrefilter(function(options) {
 		options.headers = {
 			'Accept': 'application/json',
-			'X-Requested-With': 'XMLHttpRequest',
-      'Authorization': 'Meow'
+			'X-Requested-With': 'XMLHttpRequest'
 		};
 	});
 }
