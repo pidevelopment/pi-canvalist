@@ -34,7 +34,7 @@ module.exports = function(environment) {
 
     'simple-auth': {
       authorizer: 'authorizer:application',
-      routeAfterAuthentication: 'application'
+      routeAfterAuthentication: 'campaigns'
     }
   };
 

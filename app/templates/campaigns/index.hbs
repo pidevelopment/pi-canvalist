@@ -1,32 +1,17 @@
-<h3>Campaigns
-	{{#link-to 'campaigns.new'}}
-	<a class="light-blue darken-3 waves-light waves-effect btn-floating">
-		<i class="mdi-content-add left"></i>
-	</a>
-	{{/link-to}}
-</h3>
+<h2>
+  {{model.length}} Campaign(s)
+  <div class="heading-button">{{#link-to 'campaigns.new'}}{{bs-button type="primary" icon="fa fa-plus" textState=buttonState defaultText="Add New" loadingText="Loading..."}}{{/link-to}}</div>
+</h2>
 
-{{#each model as |campaign|}}
-  {{campaign.title}}
+{{#if model}}
+  <div class="list-group">
+    {{#each model as |campaign|}}
+      {{#link-to 'campaigns.view' campaign.id class="list-group-item"}}
+        <span class="badge">{{fa-icon "list-ul"}} Manage</span>
+        <h4 class="list-group-item-heading">{{campaign.title}}</h4>
+      {{/link-to}}
+    {{/each}}
+  </div>
 {{else}}
-  You don't have any campaigns. Why not {{#link-to 'campaigns.new'}}create one{{/link-to}}?
-{{/each}}
-
-{{#md-table content=model as |row|}}
-  {{#md-table-col row=row key='title' header='Title'}}
-    {{#link-to 'campaigns.view' row.id}}{{row.title}}{{/link-to}}
-  {{/md-table-col}}
-  {{#md-table-col row=row key='description' header='Description'}}
-    {{row.description}}
-  {{/md-table-col}}
-  {{#md-table-col row=row key='start' header='Dates'}}
-    Start: {{row.start}}<br>
-    End: {{row.end}}
-  {{/md-table-col}}
-  {{#md-table-col row=row key='scope' header='Scope'}}
-    {{row.scope}}
-  {{/md-table-col}}
-  {{#md-table-col row=row key='id' header='Actions'}}
-    {{#link-to 'campaigns.view' row.id}}View Campaign{{/link-to}}
-  {{/md-table-col}}
-{{/md-table}}
+  You don't have any campaigns yet. Why not {{#link-to 'campaigns.new'}}create one{{/link-to}}?
+{{/if}}
