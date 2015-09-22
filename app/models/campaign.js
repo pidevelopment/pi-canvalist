@@ -1,12 +1,11 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  owner: DS.attr('string'),
-  title: DS.attr('string'),
-  description: DS.attr('string'),
-  start: DS.attr('date'),
-  end: DS.attr('date'),
-  scope: DS.attr('string')
+	description: DS.attr('string'),
+	end: DS.attr('date'),
+	start: DS.attr('date'),
+	scope: DS.attr('string'),
+	title: DS.attr('string')
 });
 
 // “owner”: “<uuid of requester>”   <— must mactch the id determined in the authorization header.
