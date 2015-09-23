@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-var apiURL = 'https://petitions.pidevelopment.org/api/';
+var apiURL = 'http://petitions.pidevelopment.org/api/';
 
 export default Ember.Service.extend({
 
