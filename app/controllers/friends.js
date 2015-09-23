@@ -27,15 +27,18 @@ export default Ember.Controller.extend({
     },
 
     addFriend: function(friend) {
-      friend.set('hasBeenAdded', true);
-      this.pidevApi.get('ezdray/v1/users/request/' + friend.id, {},
+      var controller = this;
+      controller.pidevApi.get('ezdray/v1/users/request/' + friend.id, {},
         function(response) {
           Ember.Logger.info("success", response);
+          friend.set('hasBeenAdded', true);
         },
         function(response) {
           Ember.Logger.info("error", response);
-        }
+        },
+        controller.get('session.secure.token')
       );
+
     }
   }
 });
