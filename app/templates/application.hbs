@@ -16,6 +16,12 @@
       <ul class="nav navbar-nav navbar-right">
         {{#if session.isAuthenticated}}
           {{#bs-dropdown tagName="li"}}
+            {{#bs-dropdown-toggle}}{{fa-icon "group"}} <span class="caret"></span>{{/bs-dropdown-toggle}}
+            {{#bs-dropdown-menu}}
+              <li>{{#link-to 'friends'}}Find Friends{{/link-to}}</li>
+            {{/bs-dropdown-menu}}
+          {{/bs-dropdown}}
+          {{#bs-dropdown tagName="li"}}
             {{#bs-dropdown-toggle class="dropdown-toggle-img"}}Hi, {{session.secure.user.name}}! <img src="{{session.secure.user.picture}}" alt="photo of {{session.secure.user.name}}" class="navbar-img img-circle"> <span class="caret"></span>{{/bs-dropdown-toggle}}
             {{#bs-dropdown-menu}}
               <li><a href="#" {{action 'invalidateSession'}}>{{fa-icon "sign-out"}} Logout</a></li>
