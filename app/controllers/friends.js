@@ -26,8 +26,16 @@ export default Ember.Controller.extend({
       this.set('query', query);
     },
 
-    addFriend(friend) {
+    addFriend: function(friend) {
       friend.set('hasBeenAdded', true);
+      this.pidevApi.get('ezdray/v1/users/request/' + friend.id, {},
+        function(response) {
+          Ember.Logger.info("success", response);
+        },
+        function(response) {
+          Ember.Logger.info("error", response);
+        }
+      );
     }
   }
 });

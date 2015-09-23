@@ -4,11 +4,12 @@ var apiURL = 'https://petitions.pidevelopment.org/api/';
 
 export default Ember.Service.extend({
 
-  get: function(route, params, successCallback, failureCallback, token) {
+  get: function(route, params, successCallback, failureCallback) {
     params = typeof params !== 'undefined' ? params : [];
+    return [];
     return Ember.$.ajax({
       type: 'GET',
-      url: route,
+      url: apiURL + route,
       data: params,
       beforeSend: function(request) {
         request.setRequestHeader("Authorization", "Bearer " + token);
