@@ -24,6 +24,8 @@
           {{#bs-dropdown tagName="li"}}
             {{#bs-dropdown-toggle class="dropdown-toggle-img"}}Hi, {{session.secure.user.name}}! <img src="{{session.secure.user.picture}}" alt="photo of {{session.secure.user.name}}" class="navbar-img img-circle"> <span class="caret"></span>{{/bs-dropdown-toggle}}
             {{#bs-dropdown-menu}}
+              <li>{{#link-to 'campaigns'}}Campaigns{{/link-to}}</li>
+              <li class="divider"></li>
               <li><a href="#" {{action 'invalidateSession'}}>{{fa-icon "sign-out"}} Logout</a></li>
             {{/bs-dropdown-menu}}
           {{/bs-dropdown}}
