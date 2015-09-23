@@ -6,9 +6,10 @@ export default Ember.Service.extend({
 
   get: function(route, params, successCallback, failureCallback, token) {
     params = typeof params !== 'undefined' ? params : [];
+    token = typeof token !== 'undefined' ? token : null;
     return Ember.$.ajax({
       type: 'GET',
-      url: route,
+      url: apiURL + route,
       data: params,
       beforeSend: function(request) {
         request.setRequestHeader("Authorization", "Bearer " + token);
