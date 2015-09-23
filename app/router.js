@@ -10,7 +10,9 @@ Router.map(function() {
   	this.route('new');
   	this.route('view', { path: '/:id' });
   });
-  this.route('friends');
+  this.route('friends', function() {
+    this.route('view', { path: '/:id' });
+  });
 });
 
 export default Router;

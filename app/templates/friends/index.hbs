@@ -1,0 +1,35 @@
+<ol class="breadcrumb">
+  <li class="active">Friends</li>
+</ol>
+
+<div class="site-content--inset">
+  <h3>Friend Search</h3>
+
+  <p>{{pi-search action="updateQuery" query=query placeholder="Enter name or email"}}</p>
+</div>
+
+<hr>
+
+{{#if results}}
+<div class="row">
+  {{#each results as |friend|}}
+    <div class="col-sm-4">
+    <div class="media">
+      <div class="media-left">
+        <img class="media-object" src="{{friend.photo}}" style="width:70px;" alt="thumbnail of {{friend.fname}} {{friend.lname}}">
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">{{friend.fname}} {{friend.lname}}</h4>
+        <p>
+          {{#if friend.hasBeenAdded}}
+            Request sent.
+          {{else}}
+            <button class="btn btn-sm btn-primary" {{action 'addFriend' friend}}>Add Friend</button>
+          {{/if}}
+        </p>
+      </div>
+    </div>
+    </div>
+  {{/each}}
+</div>
+{{/if}}

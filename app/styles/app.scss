@@ -8,6 +8,14 @@ $font-size-base: 18px;
 // $fa-css-prefix: 'glyphicon';
 @import "../../bower_components/font-awesome/scss/font-awesome";
 
+.site-nav .dropdown-toggle .badge {
+  background-color: $brand-danger;
+}
+
+.dropdown-menu {
+  .has-img { padding-left: 5px; padding-right: 5px;}
+  img { width: 30px; }
+}
 
 .dropdown-toggle-img {
   padding-right: 37px !important;

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default site-nav">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -16,13 +16,32 @@
       <ul class="nav navbar-nav navbar-right">
         {{#if session.isAuthenticated}}
           {{#bs-dropdown tagName="li"}}
-            {{#bs-dropdown-toggle}}{{fa-icon "group"}} <span class="caret"></span>{{/bs-dropdown-toggle}}
+            {{#bs-dropdown-toggle}}
+              {{fa-icon "user-plus"}}
+              {{#if session.secure.user.friend_requests}}
+                <div class="badge">{{session.secure.user.friend_requests.length}}</div>
+              {{/if}}
+              <span class="caret"></span>
+            {{/bs-dropdown-toggle}}
             {{#bs-dropdown-menu}}
-              <li>{{#link-to 'friends'}}Find Friends{{/link-to}}</li>
+              {{#if session.secure.user.friend_requests}}
+                <li class="dropdown-header">Friend Requests</li>
+                {{#each session.secure.user.friend_requests as |request|}}
+                  <li>
+                    {{#link-to 'friends.view' request.myid class="has-img"}}
+                      <img src="{{request.photo}}" alt="">
+                      {{request.fname}} {{request.lname}}
+                      <button {{action 'acceptRequest' request}} class="btn btn-success btn-sm btn-request-action" style="margin-left: 10px;">{{fa-icon "check" fixedWidth=true}}</button>
+                      <button {{action 'denyRequest' request}} class="btn btn-danger btn-sm btn-request-action">{{fa-icon "times" fixedWidth=true}}</button>
+                    {{/link-to}}
+                  </li>
+                {{/each}}
+              {{/if}}
+              <li>{{#link-to 'friends'}}Friend Search{{/link-to}}</li>
             {{/bs-dropdown-menu}}
           {{/bs-dropdown}}
           {{#bs-dropdown tagName="li"}}
-            {{#bs-dropdown-toggle class="dropdown-toggle-img"}}Hi, {{session.secure.user.name}}! <img src="{{session.secure.user.picture}}" alt="photo of {{session.secure.user.name}}" class="navbar-img img-circle"> <span class="caret"></span>{{/bs-dropdown-toggle}}
+            {{#bs-dropdown-toggle class="dropdown-toggle-img"}}Hi, {{session.secure.user.fname}}! <img src="{{session.secure.user.photo}}" alt="photo of {{session.secure.user.fname}}" class="navbar-img img-circle"> <span class="caret"></span>{{/bs-dropdown-toggle}}
             {{#bs-dropdown-menu}}
               <li>{{#link-to 'campaigns'}}Campaigns{{/link-to}}</li>
               <li class="divider"></li>

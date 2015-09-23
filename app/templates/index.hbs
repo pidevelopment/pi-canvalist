@@ -1,9 +1,17 @@
-<div class="jumbotron">
-  <div class="container">
-    <h1>Signature Verification App</h1>
-    <p>Keep track of signature on your petitions like never before!</p>
-    <p>
-      {{#bs-button type="default" icon="fa fa-sign-out" action="invalidateSession"}}Log Out{{/bs-button}}
-    </p>
+<h2>
+  {{model.campaigns.length}} Campaign(s)
+  <div class="heading-button">{{#link-to 'campaigns.new'}}{{bs-button type="primary" icon="fa fa-plus" textState=buttonState defaultText="Add New" loadingText="Loading..."}}{{/link-to}}</div>
+</h2>
+
+{{#if model.campaigns}}
+  <div class="list-group">
+    {{#each model.campaigns as |campaign|}}
+      {{#link-to 'campaigns.view' campaign.id class="list-group-item"}}
+        <span class="badge">{{fa-icon "list-ul"}} Manage</span>
+        <h4 class="list-group-item-heading">{{campaign.title}}</h4>
+      {{/link-to}}
+    {{/each}}
   </div>
-</div>
+{{else}}
+  You don't have any campaigns yet. Why not {{#link-to 'campaigns.new'}}create one{{/link-to}}?
+{{/if}}
