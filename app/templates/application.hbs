@@ -28,16 +28,16 @@
                 <li class="dropdown-header">Friend Requests</li>
                 {{#each session.secure.user.friend_requests as |request|}}
                   <li>
-                    {{#link-to 'friends.view' request.myid class="has-img"}}
+                    {{#link-to 'profiles.view' request.myid class="has-img"}}
                       <img src="{{request.photo}}" alt="">
                       {{request.fname}} {{request.lname}}
-                      <button {{action 'acceptRequest' request}} class="btn btn-success btn-sm btn-request-action" style="margin-left: 10px;">{{fa-icon "check" fixedWidth=true}}</button>
-                      <button {{action 'denyRequest' request}} class="btn btn-danger btn-sm btn-request-action">{{fa-icon "times" fixedWidth=true}}</button>
+                      <button {{action 'acceptRequest' request bubbles=false}} class="btn btn-success btn-sm btn-request-action" style="margin-left: 10px;">{{fa-icon "check" fixedWidth=true}}</button>
+                      <button {{action 'denyRequest' request bubbles=false}} class="btn btn-danger btn-sm btn-request-action">{{fa-icon "times" fixedWidth=true}}</button>
                     {{/link-to}}
                   </li>
                 {{/each}}
               {{/if}}
-              <li>{{#link-to 'friends'}}Friend Search{{/link-to}}</li>
+              <li>{{#link-to 'friends'}}Find Friends{{/link-to}}</li>
             {{/bs-dropdown-menu}}
           {{/bs-dropdown}}
           {{#bs-dropdown tagName="li"}}

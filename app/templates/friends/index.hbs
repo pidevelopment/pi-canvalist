@@ -2,10 +2,31 @@
   <li class="active">Friends</li>
 </ol>
 
+{{#if model}}
+<div class="row">
+  {{#each model as |friend|}}
+    <div class="col-sm-4">
+    <div class="media">
+      <div class="media-left">
+        <img class="media-object" src="{{friend.photo}}" style="width:70px;" alt="thumbnail of {{friend.fname}} {{friend.lname}}">
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">{{friend.fname}} {{friend.lname}}</h4>
+        <p>
+          {{#link-to 'profiles.view' friend.id class="btn btn-sm btn-primary"}}View Profile{{/link-to}}
+        </p>
+      </div>
+    </div>
+    </div>
+  {{/each}}
+</div>
+{{/if}}
+
 <div class="site-content--inset">
   <h3>Friend Search</h3>
 
-  <p>{{pi-search action="updateQuery" query=query placeholder="Enter name or email"}}</p>
+  <p>{{pi-search action="updateQuery" query=query placeholder="Enter first name" minQueryLength=4}}</p>
+  <span id="helpBlock" class="help-block"><small>Please enter at least 4 characters</small></span>
 </div>
 
 <hr>
