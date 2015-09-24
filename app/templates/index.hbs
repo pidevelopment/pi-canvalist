@@ -1,19 +1,11 @@
-<div class="site-content--inset">
-  <h2>
-    {{model.campaigns.length}} Campaign(s)
-    <div class="heading-button">{{#link-to 'campaigns.new'}}{{bs-button type="primary" icon="fa fa-plus" textState=buttonState defaultText="Add New" loadingText="Loading..."}}{{/link-to}}</div>
-  </h2>
+<ol class="breadcrumb">
+  <li>Dashboard</li>
+</ol>
 
-  {{#if model.campaigns}}
-    <div class="list-group">
-      {{#each model.campaigns as |campaign|}}
-        {{#link-to 'campaigns.view' campaign.id class="list-group-item"}}
-          <span class="badge">{{fa-icon "list-ul"}} Manage</span>
-          <h4 class="list-group-item-heading">{{campaign.title}}</h4>
-        {{/link-to}}
-      {{/each}}
-    </div>
-  {{else}}
-    You don't have any campaigns yet. Why not {{#link-to 'campaigns.new'}}create one{{/link-to}}?
-  {{/if}}
+<div class="site-content--inset">
+  <h3>Dashboard</h3>
+
+  <p>Welcome to your signature verification dashboard. From here you can:</p>
+
+  <p>{{#link-to 'campaigns' class="btn btn-primary"}}{{fa-icon "list-ul"}} Manage Your Campaigns{{/link-to}}</p>
 </div>
