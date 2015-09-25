@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
-export function currentYear(params/*, hash*/) {
-  // return params;
+export function currentYear(/*params, hash*/) {
   return new Date().getFullYear();
 }
 

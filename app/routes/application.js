@@ -27,7 +27,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
 
     acceptRequest: function(request) {
       Ember.Logger.info("accepting request", request);
-      var user = this.get('session.secure.user');
+      // var user = this.get('session.secure.user');
       var route = this;
       this.pidevApi.get('ezdray/v1/users/confirm/' + request.myid, {},
         function(response) {
@@ -46,7 +46,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
 
     denyRequest: function(request) {
       Ember.Logger.info("denying request", request);
-      var user = this.get('session.secure.user');
+      // var user = this.get('session.secure.user');
       var route = this;
       this.pidevApi.get('ezdray/v1/users/deny/' + request.myid, {},
         function(response) {

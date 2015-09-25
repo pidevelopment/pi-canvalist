@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.RESTSerializer.extend({
@@ -16,7 +17,7 @@ export default DS.RESTSerializer.extend({
         var friend = friends[i].friend_profile;
         friend.id = friend.myid;
         normalizedFriends.push(friend);
-      };
+      }
       return { "friends": normalizedFriends };
     }
     Ember.Logger.info("payload is 0");
