@@ -38,7 +38,7 @@
       </thead>
       <tbody>
         {{#each sortedResults as |voter|}}
-          <tr>
+          <tr {{bind-attr class="voter.hasSigned:success"}}>
             <td>{{voter.firstname}}</td>
             <td>{{voter.lastname}}</td>
             <td>{{voter.fulladdress}}</td>
