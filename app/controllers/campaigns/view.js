@@ -11,16 +11,24 @@ export default Ember.Controller.extend({
 
   actions: {
     updateQuery: function(query) {
+
+      // setup
       var controller = this;
-      Ember.Logger.info("updateQuery", query);
-      var campaignID = this.get('model.id');
+      var params = {"query": query, "campaign": this.get('model.id')};
+
       // only hit api if query length is 4 or less
       // TODO: if query length is greater than 4,
       //       filter the data we have by "lastname" value
       if(query.length <= 4) {
+
+        // start fresh
         controller.store.unloadAll('voter');
+
+        // make the spinny thing happen
         controller.set('isLoading', true);
-        controller.store.find('voter', {"query": query, "campaign": campaignID}).then(function(voters) {
+
+        // ember data will get us some voters
+        controller.store.find('voter', params).then(function(voters) {
           controller.set('results', voters);
           controller.set('isLoading', false);
         }, function(error) {
