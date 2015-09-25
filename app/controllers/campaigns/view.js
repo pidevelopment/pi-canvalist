@@ -15,19 +15,15 @@ export default Ember.Controller.extend({
     var search = this.get('search');
     var controller = this;
 
-    // only hit api if search is 4 or less
-    // TODO: if search is greater than 4, filter what we have
-    if(search.length <= 4) {
+    // search params for API
+    // only sending first 4 chars to the API bc Vince said so ¯\_(ツ)_/¯
+    var params = { query: search.substring(0,4), campaign: controller.get('model.id') };
 
-      // search params for API
-      var params = { query: search, campaign: controller.get('model.id') };
+    // start fresh
+    controller.store.unloadAll('voter');
 
-      // start fresh
-      controller.store.unloadAll('voter');
-
-      // ember data will get us some voters
-      return controller.store.find('voter', params);
-    }
+    // ember data will get us some voters
+    return controller.store.find('voter', params);
   }),
 
   actions: {
