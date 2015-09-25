@@ -7,19 +7,19 @@ export default Ember.Controller.extend({
   isLoading: false,
 
   sortedResults: Ember.computed('search', function() {
-    // get needed variables
-    var search = this.get('search');
-    var controller = this;
 
     // search params for API
     // only sending first 4 chars to the API bc Vince said so ¯\_(ツ)_/¯
-    var params = { query: search.substring(0,4), campaign: controller.get('model.id') };
+    var params = {
+      query: this.get('search').substring(0,4),
+      campaign: this.get('model.id')
+    };
 
     // start fresh
-    controller.store.unloadAll('voter');
+    this.store.unloadAll('voter');
 
     // ember data will get us some voters
-    return controller.store.find('voter', params);
+    return this.store.find('voter', params);
   }),
 
   actions: {
