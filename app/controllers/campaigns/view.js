@@ -2,41 +2,35 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
-  queryParams: ['query'],
+  queryParams: ['query', 'search'],
+  search: "",
   query: null,
   minValueLength: 2,
   maxValueLength: 4,
   isLoading: false,
   results: [],
 
+  sortedResults: Ember.computed('search', function() {
+    // get needed variables
+    var search = this.get('search');
+    var controller = this;
+
+    // only hit api if search is 4 or less
+    // TODO: if search is greater than 4, filter what we have
+    if(search.length <= 4) {
+
+      // search params for API
+      var params = { query: search, campaign: controller.get('model.id') };
+
+      // start fresh
+      controller.store.unloadAll('voter');
+
+      // ember data will get us some voters
+      return controller.store.find('voter', params);
+    }
+  }),
+
   actions: {
-    updateQuery: function(query) {
-
-      // setup
-      var controller = this;
-      var params = {"query": query, "campaign": this.get('model.id')};
-
-      // only hit api if query length is 4 or less
-      // TODO: if query length is greater than 4,
-      //       filter the data we have by "lastname" value
-      if(query.length <= 4) {
-
-        // start fresh
-        controller.store.unloadAll('voter');
-
-        // make the spinny thing happen
-        controller.set('isLoading', true);
-
-        // ember data will get us some voters
-        controller.store.find('voter', params).then(function(voters) {
-          controller.set('results', voters);
-          controller.set('isLoading', false);
-        }, function(error) {
-           controller.set('results', []);
-           controller.set('isLoading', false);
-        });
-      }
-    },
 
     markAsSigned: function(voter) {
       var campaignID = this.get('model.id');

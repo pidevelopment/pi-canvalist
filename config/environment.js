@@ -34,7 +34,7 @@ module.exports = function(environment) {
 
     'simple-auth': {
       authorizer: 'authorizer:application',
-      routeAfterAuthentication: 'campaigns',
+      // routeAfterAuthentication: 'campaigns',
       // crossOriginWhitelist: ['http://petitions.pidevelopment.org']
     }
   };

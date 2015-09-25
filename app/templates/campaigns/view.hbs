@@ -14,7 +14,7 @@
 
   <h4>Search Voters</h4>
 
-  <p>{{pi-search action="updateQuery" query=query placeholder="Search by last name"}}</p>
+  <p>{{bs-input type="text" value=search placeholder="Enter last name"}}</p>
 
 </div>
 
@@ -23,10 +23,10 @@
     {{fa-icon "refresh" spin=true classNames="fa-4x text-muted"}}
   </div>
 {{else}}
-  {{#if results}}
+  {{#if sortedResults}}
   <div class="table-responsive">
     <table class="table table-striped table-bordered table-hover">
-      <caption>Showing {{results.length}} voters</caption>
+      <caption>Showing {{sortedResults.length}} voters</caption>
       <thead>
         <tr>
           <th>First Name</th>
@@ -37,7 +37,7 @@
         </tr>
       </thead>
       <tbody>
-        {{#each results as |voter|}}
+        {{#each sortedResults as |voter|}}
           <tr>
             <td>{{voter.firstname}}</td>
             <td>{{voter.lastname}}</td>
