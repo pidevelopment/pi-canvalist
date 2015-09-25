@@ -56,13 +56,18 @@ $font-size-base: 18px;
 	top: 5px;
 }
 
-// .sr-only {
-// 	position: absolute;
-// 	width: 1px;
-// 	height: 1px;
-// 	padding: 0;
-// 	margin: -1px;
-// 	overflow: hidden;
-// 	clip: rect(0,0,0,0);
-// 	border: 0;
-// }
+.btn-changer {
+  .btn-changer-old { display: inline; }
+  .btn-changer-new { display: none; }
+
+  &:hover,
+  &:active,
+  &:focus {
+    .btn-changer-old { display: none; }
+    .btn-changer-new { display: inline; }
+  }
+}
+
+.table th small {
+  font-weight: normal;
+}

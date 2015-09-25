@@ -14,4 +14,54 @@
 
   <h4>Search Voters</h4>
   {{pi-autocomplete campaign=model.id}}
+
+  <hr>
+
+  <h4>New Search</h4>
+  <p>{{pi-search action="updateQuery" query=query placeholder="Search by last name"}}</p>
+
 </div>
+
+{{#if isLoading}}
+  <div style="text-align:center;">
+    {{fa-icon "refresh" spin=true classNames="fa-4x text-muted"}}
+  </div>
+{{else}}
+  {{#if results}}
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+      <caption>Showing {{results.length}} voters</caption>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Address</th>
+          <th>Voter ID</th>
+          <th>Status <small class="text-muted">(Click to change)</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each results as |voter|}}
+          <tr>
+            <td>{{voter.firstname}}</td>
+            <td>{{voter.lastname}}</td>
+            <td>{{voter.fulladdress}}</td>
+            <td>{{voter.id}}</td>
+            <td>
+              {{#if voter.hasSigned}}
+                <button class="btn btn-success btn-block" {{action 'markAsUnsigned' voter}}>{{fa-icon "check"}} Signed</button>
+              {{else}}
+                <button class="btn btn-default btn-block" {{action 'markAsSigned' voter}}>{{fa-icon "times"}} Not Signed</button>
+              {{/if}}
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  {{else}}
+    {{#if value}}
+       <p>No voters found for "{{value}}"</p>
+    {{/if}}
+  {{/if}}
+{{/if}}
