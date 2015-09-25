@@ -2,13 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
-  queryParams: ['query', 'search'],
+  queryParams: ['search'],
   search: "",
-  query: null,
-  minValueLength: 2,
-  maxValueLength: 4,
   isLoading: false,
-  results: [],
 
   sortedResults: Ember.computed('search', function() {
     // get needed variables
