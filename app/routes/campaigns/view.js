@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function(params) {
+    this.store.unloadAll('voter');
     return this.store.findRecord('campaign', params.id);
   },
 
