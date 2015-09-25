@@ -6,18 +6,14 @@
 <div class="site-content--inset">
   <h3>{{model.title}}</h3>
 
-  <p class="text-muted">
+{{!--   <p class="text-muted">
     <strong>Start:</strong> {{model.start}} | <strong>End</strong> {{model.end}}
-  </p>
+  </p> --}}
 
   <p><strong>Description:</strong> {{model.description}}</p>
 
   <h4>Search Voters</h4>
-  {{pi-autocomplete campaign=model.id}}
 
-  <hr>
-
-  <h4>New Search</h4>
   <p>{{pi-search action="updateQuery" query=query placeholder="Search by last name"}}</p>
 
 </div>
