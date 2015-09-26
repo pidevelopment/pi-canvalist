@@ -10,8 +10,9 @@ export default Ember.Controller.extend({
 
     // search params for API
     // only sending first 4 chars to the API bc Vince said so ¯\_(ツ)_/¯
+    var query = this.get('search');
     var params = {
-      query: this.get('search').substring(0,4),
+      query: query.substring(0,4),
       campaign: this.get('model.id')
     };
 
@@ -19,7 +20,13 @@ export default Ember.Controller.extend({
     this.store.unloadAll('voter');
 
     // ember data will get us some voters
-    return this.store.find('voter', params);
+    var voters = this.store.filter('voter', params, function(voter) {
+      if (voter.get('lastname').toLowerCase().indexOf(query.toLowerCase()) > -1) { 
+        return true; 
+      }
+      return false;
+    });
+    return voters;
   }),
 
   actions: {

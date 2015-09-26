@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import { request } from 'ic-ajax';
 
 export default Ember.Route.extend({
 	actions: {
@@ -13,7 +12,7 @@ export default Ember.Route.extend({
       var route = this;
       if (!campaign.title) {
         Ember.Logger.info("no title");
-        return false
+        return false;
       }
       var token = this.get('session.secure.token');
       return Ember.$.ajax({
