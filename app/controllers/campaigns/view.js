@@ -21,8 +21,8 @@ export default Ember.Controller.extend({
 
     // ember data will get us some voters
     var voters = this.store.filter('voter', params, function(voter) {
-      if (voter.get('lastname').toLowerCase().indexOf(query.toLowerCase()) > -1) { 
-        return true; 
+      if (voter.get('lastname').toLowerCase().indexOf(query.toLowerCase()) > -1) {
+        return true;
       }
       return false;
     });
