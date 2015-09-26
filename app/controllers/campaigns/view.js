@@ -52,7 +52,10 @@ export default Ember.Controller.extend({
         },
         this.get('session.secure.token')
       );
+    },
 
+    grantAccess: function(friend) {
+      Ember.Logger.info("grant access to this campaign to a friend", friend);
     }
 
   }
